@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnegie Corporation - AI Adoption Proposal | Meet the Moment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --carnegie-blue: #005587;
+            --carnegie-light-blue: #0077be;
+            --carnegie-dark: #1a1a1a;
+            --carnegie-gray: #666666;
+            --carnegie-light-gray: #f5f5f5;
+            --accent-gold: #d4a03a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--carnegie-dark);
+            background: white;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--carnegie-blue);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--carnegie-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--carnegie-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--carnegie-blue) 0%, var(--carnegie-light-blue) 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            color: var(--carnegie-blue);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            border-bottom: 2px solid var(--carnegie-light-gray);
+            padding-bottom: 1rem;
+        }
+
+        h3 {
+            color: var(--carnegie-dark);
+            font-size: 1.75rem;
+            margin: 2rem 0 1rem;
+            font-weight: 400;
+        }
+
+        h4 {
+            color: var(--carnegie-blue);
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: var(--carnegie-gray);
+        }
+
+        ul {
+            margin: 1rem 0 1rem 2rem;
+            color: var(--carnegie-gray);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--carnegie-light-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .card h4 {
+            color: var(--carnegie-blue);
+            margin-top: 0;
+        }
+
+        /* Phase Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-marker {
+            width: 60px;
+            height: 60px;
+            background: var(--carnegie-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        .timeline-content {
+            margin-left: 2rem;
+            flex: 1;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            bottom: 60px;
+            width: 2px;
+            background: var(--carnegie-light-gray);
+        }
+
+        /* Investment Options */
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--carnegie-light-gray);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--carnegie-blue);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 12px 36px rgba(0,0,0,0.15);
+        }
+
+        .pricing-header {
+            margin-bottom: 2rem;
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            color: var(--carnegie-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--carnegie-dark);
+        }
+
+        .pricing-duration {
+            color: var(--carnegie-gray);
+            font-size: 1rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--carnegie-light-gray);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Success Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--carnegie-light-gray);
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--carnegie-blue);
+        }
+
+        .metric-label {
+            color: var(--carnegie-gray);
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--carnegie-blue) 0%, var(--carnegie-light-blue) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 12px;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: var(--carnegie-blue);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* About Us Section Styles */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .team-member {
+            background: white;
+            border: 1px solid var(--carnegie-light-gray);
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+
+        .team-member h3 {
+            color: var(--carnegie-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-title {
+            color: var(--carnegie-gray);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .credentials {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .credential {
+            background: var(--carnegie-light-gray);
+            color: var(--carnegie-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .team-member h4 {
+            color: var(--carnegie-dark);
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-member ul {
+            color: var(--carnegie-gray);
+            margin-left: 1.5rem;
+        }
+
+        .team-member li {
+            margin-bottom: 0.75rem;
+        }
+
+        .certification-details {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--carnegie-blue);
+        }
+
+        .certification-details p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--carnegie-gray);
+        }
+
+        .certification-details strong {
+            color: var(--carnegie-blue);
+        }
+
+        .experience-highlights {
+            background: linear-gradient(135deg, var(--carnegie-blue) 0%, var(--carnegie-light-blue) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .experience-highlights h3 {
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .impact-item {
+            text-align: center;
+        }
+
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        .case-studies {
+            background: var(--carnegie-light-gray);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .case-studies h3 {
+            color: var(--carnegie-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .case-studies ul {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .case-studies li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .case-studies li:last-child {
+            border-bottom: none;
+        }
+
+        .philosophy {
+            margin: 3rem 0;
+            padding: 2rem;
+        }
+
+        .philosophy h3 {
+            text-align: center;
+            color: var(--carnegie-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.25rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-content {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Print styles */
+        @media print {
+            header {
+                position: relative;
+            }
+
+            .hero {
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">Carnegie × Meet the Moment</div>
+            <nav>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#framework">Framework</a></li>
+                    <li><a href="#investment">Investment</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AI Adoption & Strategic Implementation</h1>
+            <p class="subtitle">Empowering Carnegie Corporation to lead philanthropy's AI transformation</p>
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Duration</span>
+                    <span class="meta-value">3 Months</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Staff Impact</span>
+                    <span class="meta-value">75-80 Members</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Focus Areas</span>
+                    <span class="meta-value">3 Programs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Executive Summary -->
+        <section id="overview" class="section">
+            <h2>Executive Summary</h2>
+            <p>Meet the Moment proposes a comprehensive AI adoption program designed to empower Carnegie Corporation's staff to effectively leverage AI tools in service of the foundation's mission across International Peace & Security, Strengthening Democracy, and Education.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Transform Knowledge Work</h4>
+                    <p>Move from sporadic AI use to systematic enhancement of grant-making, research, and strategic planning.</p>
+                </div>
+                <div class="card">
+                    <h4>Build Internal Capacity</h4>
+                    <p>Reduce dependency on expensive consultants through AI-enhanced research capabilities.</p>
+                </div>
+                <div class="card">
+                    <h4>Mission Amplification</h4>
+                    <p>Maximize the impact of Carnegie's $4.5 billion in assets through intelligent automation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current State Analysis -->
+        <section class="section">
+            <h2>Understanding Carnegie Today</h2>
+            
+            <h3>Existing Strengths</h3>
+            <ul>
+                <li>Established AI Working Group with cross-departmental representation</li>
+                <li>Clear governance framework including usage guidelines</li>
+                <li>Secure ChatGPT instance already deployed</li>
+                <li>Strong leadership commitment from President</li>
+                <li>75+ years of philanthropic excellence and influence</li>
+            </ul>
+
+            <h3>Opportunities for Growth</h3>
+            <ul>
+                <li>Transform staff from AI-curious to AI-proficient</li>
+                <li>Create consistent adoption across all departments</li>
+                <li>Establish measurable ROI from AI investments</li>
+                <li>Position Carnegie as thought leader in AI for philanthropy</li>
+            </ul>
+        </section>
+
+        <!-- Three-Phase Framework -->
+        <section id="framework" class="section">
+            <h2>Three-Phase Transformation Framework</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>Discovery & Assessment (Weeks 1-2)</h3>
+                        <p>Comprehensive evaluation of current AI usage, skill levels, and organizational readiness.</p>
+                        <ul>
+                            <li>Staff readiness survey and skills assessment</li>
+                            <li>Use case inventory and opportunity mapping</li>
+                            <li>Strategic alignment with President's vision</li>
+                            <li>Success metrics definition</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Customized Training & Capacity Building (Weeks 3-10)</h3>
+                        <p>Tiered learning pathways tailored to Carnegie's unique needs and mission.</p>
+                        <ul>
+                            <li>Foundation track for all staff</li>
+                            <li>Department-specific workshops</li>
+                            <li>Advanced practitioner labs</li>
+                            <li>Real-world Carnegie use cases</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>Implementation & Sustainability (Weeks 11-12)</h3>
+                        <p>Ensure lasting transformation through systems and support structures.</p>
+                        <ul>
+                            <li>Tool standardization recommendations</li>
+                            <li>AI Champions network creation</li>
+                            <li>Performance integration guidelines</li>
+                            <li>Continuous learning infrastructure</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Metrics -->
+        <section class="section">
+            <h2>Measurable Impact</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">90%</div>
+                    <div class="metric-label">Staff actively using AI weekly</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">50%</div>
+                    <div class="metric-label">Reduction in research time</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">3-10x</div>
+                    <div class="metric-label">Productivity increase</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">25%</div>
+                    <div class="metric-label">Decrease in consultant costs</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Options -->
+        <section id="investment" class="section">
+            <h2>Investment Options</h2>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Focused Training</h3>
+                        <div class="pricing-price">$15,000</div>
+                        <div class="pricing-duration">6 weeks</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Staff readiness assessment</li>
+                        <li>Core AI training modules</li>
+                        <li>Department-specific workshops</li>
+                        <li>Carnegie use case library</li>
+                        <li>Prompt engineering templates</li>
+                        <li>Quick-win implementations</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">AI Transformation</h3>
+                        <div class="pricing-price">$25,000</div>
+                        <div class="pricing-duration">3 months</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Comprehensive assessment & strategy</li>
+                        <li>All training modules & workshops</li>
+                        <li>Tool selection & standardization</li>
+                        <li>Pilot implementation support</li>
+                        <li>AI Champions program</li>
+                        <li>Performance metrics integration</li>
+                        <li>Dedicated support channel</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Strategic Advisory</h3>
+                        <div class="pricing-price">$7,500</div>
+                        <div class="pricing-duration">per month</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>One-year minimum term</li>
+                        <li>Monthly strategy sessions</li>
+                        <li>Quarterly training updates</li>
+                        <li>Continuous tool evaluation</li>
+                        <li>Executive briefings</li>
+                        <li>Trend analysis & foresight</li>
+                        <li>60-day termination notice</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Differentiators -->
+        <section class="section">
+            <h2>Why Meet the Moment</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Mission-Aligned Approach</h4>
+                    <p>Every example and use case directly relates to Carnegie's work in peace, democracy, and education—not generic business scenarios.</p>
+                </div>
+                <div class="card">
+                    <h4>Proven Change Management</h4>
+                    <p>Respecting Carnegie's 75-year culture while driving necessary innovation through evidence-based methodologies.</p>
+                </div>
+                <div class="card">
+                    <h4>Sustainable Transformation</h4>
+                    <p>Building internal capacity and systems for continuous learning, not creating consultant dependency.</p>
+                </div>
+            </div>
+
+            <h3>Our Track Record</h3>
+            <ul>
+                <li>30+ years combined experience in technology transformation</li>
+                <li>50+ nonprofit engagements completed successfully</li>
+                <li>Helped a $2B foundation reduce grant evaluation time by 40%</li>
+                <li>Enabled organizations to triple research output with same staff</li>
+                <li>Developed AI governance frameworks for 15+ nonprofits</li>
+            </ul>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="section">
+            <h2>About Meet the Moment</h2>
+            
+            <p style="font-size: 1.2rem; color: var(--carnegie-dark); margin-bottom: 3rem;">
+                Meet the Moment is a nonprofit-exclusive consultancy founded by two longtime nonprofit technology strategists with over 60 years of combined experience. We help mission-driven organizations navigate complexity, optimize impact, and lead with intention in a rapidly changing world.
+            </p>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Joshua Peskay</h3>
+                    <p class="team-title">Co-Founder | CIO/CISO & AI Strategist</p>
+                    
+                    <div class="credentials">
+                        <span class="credential" title="Certified Information Systems Security Professional - Gold standard in cybersecurity certification">CISSP</span>
+                        <span class="credential" title="Certified Information Security Manager - Enterprise security management certification">CISM</span>
+                        <span class="credential">30+ Years Experience</span>
+                    </div>
+                    
+                    <p>Joshua brings over three decades of pioneering experience transforming nonprofit organizations through strategic technological innovation. As a recognized thought leader, he was the primary contributor for "Cybersecurity in the Age of AI" in the best-selling guide "AI for Nonprofits."</p>
+                    
+                    <div class="certification-details">
+                        <p><strong>CISSP:</strong> Certified Information Systems Security Professional - The gold standard certification for cybersecurity leadership and strategy</p>
+                        <p><strong>CISM:</strong> Certified Information Security Manager - Advanced certification in enterprise information security governance and risk management</p>
+                    </div>
+                    
+                    <h4>Expertise</h4>
+                    <ul>
+                        <li>Strategic technology planning and digital transformation</li>
+                        <li>Cybersecurity and risk management for nonprofits</li>
+                        <li>AI strategy and responsible implementation</li>
+                        <li>Virtual CIO/CISO services</li>
+                    </ul>
+                    
+                    <h4>Notable Experience</h4>
+                    <ul>
+                        <li>Served 1,000+ nonprofits through technology transformation</li>
+                        <li>12+ years as 3CPO at RoundTable Technology</li>
+                        <li>Achieved 99.999% uptime for critical systems at Fund for the City of New York</li>
+                        <li>Developed AI courses for NTEN, TechSoup, and Civic Hall</li>
+                    </ul>
+                </div>
+
+                <div class="team-member">
+                    <h3>Kim Snyder</h3>
+                    <p class="team-title">Co-Founder | Digital Strategy Lead</p>
+                    
+                    <div class="credentials">
+                        <span class="credential" title="Project Management Professional - Leading project management certification">PMP</span>
+                        <span class="credential" title="Agile Certified Professional - Expertise in Agile methodologies">ACP</span>
+                        <span class="credential" title="Certified Information Privacy Professional/US - Data privacy law expertise">CIPP/US</span>
+                        <span class="credential">25+ Years Experience</span>
+                    </div>
+                    
+                    <p>Kim specializes in guiding nonprofit organizations through technological and organizational transformations, with deep expertise in data systems, business analysis, and change management. Her focus on building high-performing teams ensures sustainable adoption.</p>
+                    
+                    <div class="certification-details">
+                        <p><strong>PMP:</strong> Project Management Professional - The world's leading project management certification, demonstrating expertise in leading complex projects</p>
+                        <p><strong>ACP:</strong> Agile Certified Professional - Advanced certification in Agile methodologies and adaptive project management</p>
+                        <p><strong>CIPP/US:</strong> Certified Information Privacy Professional - Expert certification in U.S. privacy laws including HIPAA, FERPA, and state regulations</p>
+                    </div>
+                    
+                    <h4>Expertise</h4>
+                    <ul>
+                        <li>Data governance and privacy compliance</li>
+                        <li>Change management and organizational transformation</li>
+                        <li>Project management and Agile methodologies</li>
+                        <li>Strategic technology alignment with mission</li>
+                    </ul>
+                    
+                    <h4>Notable Experience</h4>
+                    <ul>
+                        <li>10+ years as 3DPO at RoundTable Technology</li>
+                        <li>Led Agile transformation at Pearson Education</li>
+                        <li>Member of Westchester County Cybersecurity Task Force</li>
+                        <li>Managed 200+ active nonprofit client portfolios</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-highlights">
+                <h3>Our Combined Impact</h3>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <div class="impact-number">31</div>
+                        <div class="impact-label">Years Working Together</div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">1,000+</div>
+                        <div class="impact-label">Nonprofits Served</div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">25-80%</div>
+                        <div class="impact-label">Efficiency Gains Achieved</div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">100%</div>
+                        <div class="impact-label">Nonprofit Focus</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-studies">
+                <h3>Recent AI Success Stories</h3>
+                <ul>
+                    <li><strong>Walton Family Foundation:</strong> Currently providing strategic AI advisory and iterative learning support for their Environment Program, including governance framework development and staff capacity building</li>
+                    <li><strong>Hebrew Free Loan Society:</strong> Implemented AI-powered loan processing with automated document classification, reducing time-to-approval while maintaining fairness and transparency</li>
+                    <li><strong>Community Service Society:</strong> Developed comprehensive AI governance framework balancing innovation with security and ethical considerations</li>
+                    <li><strong>New York Community Trust:</strong> Piloted AI grant workflow optimization, achieving 25% reduction in review time</li>
+                    <li><strong>TechSoup Learning Journey:</strong> Trained 90 professionals from 30+ organizations, improving AI competence scores by 79%</li>
+                    <li><strong>Jewish Community Centers:</strong> 7-year partnership conducting technology assessments for 20+ JCCs in NY Metro area</li>
+                </ul>
+            </div>
+
+            <div class="philosophy">
+                <h3>Our Philosophy</h3>
+                <p style="font-style: italic; font-size: 1.1rem; text-align: center; margin: 2rem auto; max-width: 800px;">
+                    "Fundamentally, we love to help people who are trying to do good in the world solve hard problems. We design technology change that meets organizations where they are, offering flexible models that ensure efficient engagements without unnecessary overhead."
+                </p>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section id="contact" class="cta-section">
+            <h2>Ready to Transform Carnegie's Future?</h2>
+            <p>Let's discuss how AI can amplify Carnegie Corporation's impact on the world's most pressing challenges.</p>
+            <a href="mailto:josh@mtm.now" class="btn">Schedule Discovery Call</a>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="section">
+            <h2>Next Steps</h2>
+            <ol>
+                <li><strong>Discovery Call</strong> with President and key stakeholders (Week of September 2)</li>
+                <li><strong>Customized Pilot</strong> - Test approach with one department</li>
+                <li><strong>Full Engagement</strong> - Scale successful practices organization-wide</li>
+            </ol>
+        </section>
+
+        <!-- Footer -->
+        <section class="section" style="text-align: center; color: var(--carnegie-gray); font-size: 0.9rem;">
+            <p><strong>Meet the Moment</strong><br>
+            Joshua Peskay & Kim Snyder<br>
+            josh@mtm.now | www.mtm.now</p>
+            <p style="font-style: italic; margin-top: 1rem;">
+            "Helping mission-driven organizations navigate technology transformation with purpose and impact"
+            </p>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .metric-card, .pricing-card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
