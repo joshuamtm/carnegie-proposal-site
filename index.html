@@ -75,6 +75,24 @@
             color: white;
             padding: 8rem 2rem 4rem;
             margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
 
         .hero-content {
@@ -258,6 +276,22 @@
         .pricing-card.featured {
             border-color: var(--carnegie-blue);
             transform: scale(1.05);
+            position: relative;
+        }
+        
+        .pricing-card.featured::before {
+            content: 'RECOMMENDED';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--carnegie-blue);
+            color: white;
+            padding: 4px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .pricing-card:hover {
@@ -314,6 +348,12 @@
             padding: 2rem;
             background: var(--carnegie-light-gray);
             border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .metric-value {
@@ -555,6 +595,125 @@
         }
 
         /* Print styles */
+        /* FAQ Section Styles */
+        .faq-section {
+            background: var(--carnegie-light-gray);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--carnegie-blue);
+        }
+        
+        .faq-item h4 {
+            color: var(--carnegie-blue);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .faq-item p {
+            margin: 0;
+            color: var(--carnegie-gray);
+        }
+
+        /* Testimonial Styles */
+        .testimonial-card {
+            background: white;
+            border: 1px solid var(--carnegie-light-gray);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            font-style: italic;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--carnegie-blue);
+            opacity: 0.2;
+        }
+        
+        .testimonial-author {
+            margin-top: 1.5rem;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--carnegie-blue);
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--carnegie-gray);
+            font-weight: 400;
+        }
+
+        /* Quick Wins Section */
+        .quick-wins {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+        
+        .quick-wins h3 {
+            color: var(--carnegie-blue);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .wins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .win-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .win-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--carnegie-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+        
+        .win-content h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--carnegie-dark);
+            font-size: 1.1rem;
+        }
+        
+        .win-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--carnegie-gray);
+        }
+
         @media print {
             header {
                 position: relative;
@@ -610,7 +769,15 @@
         <!-- Executive Summary -->
         <section id="overview" class="section">
             <h2>Executive Summary</h2>
-            <p>Meet the Moment offers flexible AI adoption pathways designed to meet Carnegie Corporation where you are today—helping your 75-80 staff members move from AI-curious to AI-capable. Whether you choose targeted training, comprehensive transformation, or ongoing advisory, our approach focuses on your immediate priority: getting those who aren't using AI to start, while supporting advanced users to excel further.</p>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--carnegie-dark);">Meet the Moment offers flexible AI adoption pathways designed to meet Carnegie Corporation where you are today—helping your 75-80 staff members move from AI-curious to AI-capable. Whether you choose targeted training, comprehensive transformation, or ongoing advisory, our approach focuses on your immediate priority: <strong>getting those who aren't using AI to start</strong>, while supporting advanced users to excel further.</p>
+            
+            <div class="testimonial-card" style="margin-top: 2rem;">
+                <p>"In preparing for my meeting with our President about AI adoption, I need options that address our biggest challenge: getting staff who aren't using AI to start thinking about and trying these tools, while also supporting our advanced users."</p>
+                <div class="testimonial-author">
+                    Nicole Buggs
+                    <div class="testimonial-role">Carnegie Corporation Leadership</div>
+                </div>
+            </div>
             
             <div class="card-grid">
                 <div class="card">
@@ -713,8 +880,8 @@
             
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <div class="metric-value">90%</div>
-                    <div class="metric-label">Staff actively using AI weekly</div>
+                    <div class="metric-value">80%+</div>
+                    <div class="metric-label">Staff trying AI tools (from current baseline)</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-value">50%</div>
@@ -935,7 +1102,7 @@
             </div>
 
             <div class="case-studies">
-                <h3>Recent AI Success Stories</h3>
+                <h3>Recent Foundation & Nonprofit AI Success Stories</h3>
                 <ul>
                     <li><strong>Walton Family Foundation:</strong> Currently providing strategic AI advisory and iterative learning support for their Environment Program, including governance framework development and staff capacity building</li>
                     <li><strong>Hebrew Free Loan Society:</strong> Implemented AI-powered loan processing with automated document classification, reducing time-to-approval while maintaining fairness and transparency</li>
@@ -951,6 +1118,97 @@
                 <p style="font-style: italic; font-size: 1.1rem; text-align: center; margin: 2rem auto; max-width: 800px;">
                     "Fundamentally, we love to help people who are trying to do good in the world solve hard problems. We design technology change that meets organizations where they are, offering flexible models that ensure efficient engagements without unnecessary overhead."
                 </p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <div class="faq-section">
+                <h2 style="text-align: center; margin-bottom: 1rem;">Frequently Asked Questions</h2>
+                <p style="text-align: center; color: var(--carnegie-gray); margin-bottom: 2rem;">Addressing common concerns about AI adoption at Carnegie</p>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>How do we get resistant staff to start using AI?</h4>
+                        <p>We focus on low-risk, high-value "quick wins" like email drafting and meeting summaries. By starting with tasks that save time immediately, we build confidence gradually. Plus, with your President's performance review integration, we provide the support staff need to meet expectations comfortably.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>We already have an AI Working Group. How do you fit in?</h4>
+                        <p>We enhance and support your existing structure. Your AI Working Group continues making governance decisions while we provide training, use case development, and implementation support. Think of us as extending your team's capacity, not replacing it.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>What about our varying skill levels?</h4>
+                        <p>Our tiered approach addresses everyone: beginners get foundational skills and confidence, intermediate users develop department-specific applications, and advanced users become AI Champions who help their peers. Everyone progresses from their current level.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>How do we identify what to use AI for?</h4>
+                        <p>This is a core focus. We run department-specific workshops to identify use cases, create a living library of Carnegie-specific applications, and facilitate peer sharing where your advanced users demonstrate their workflows. You'll leave with concrete, applicable examples.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Can we test this approach before committing fully?</h4>
+                        <p>Absolutely. Our Pilot Department option ($8,500) lets you test our approach with one team over 6 weeks. Or start with monthly advisory ($5,000/month) to explore options while you develop your strategy.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>What makes you different from other AI trainers?</h4>
+                        <p>We're nonprofit-exclusive with 60+ years combined experience. We understand grant-making, program evaluation, and philanthropic workflows. Every example relates to your actual work—not generic business scenarios. Plus, we're building sustainable adoption, not consultant dependency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Wins Section -->
+        <section class="section">
+            <div class="quick-wins">
+                <h3>Week 1 Quick Wins: Immediate Value for Carnegie Staff</h3>
+                <div class="wins-grid">
+                    <div class="win-item">
+                        <div class="win-icon">1</div>
+                        <div class="win-content">
+                            <h4>Grant Summaries</h4>
+                            <p>Transform 50-page proposals into 1-page executive summaries in minutes</p>
+                        </div>
+                    </div>
+                    <div class="win-item">
+                        <div class="win-icon">2</div>
+                        <div class="win-content">
+                            <h4>Meeting Prep</h4>
+                            <p>Generate comprehensive briefing materials from multiple documents instantly</p>
+                        </div>
+                    </div>
+                    <div class="win-item">
+                        <div class="win-icon">3</div>
+                        <div class="win-content">
+                            <h4>Email Drafting</h4>
+                            <p>Create thoughtful stakeholder communications 10x faster</p>
+                        </div>
+                    </div>
+                    <div class="win-item">
+                        <div class="win-icon">4</div>
+                        <div class="win-content">
+                            <h4>Research Synthesis</h4>
+                            <p>Compile and analyze sector research in hours, not days</p>
+                        </div>
+                    </div>
+                    <div class="win-item">
+                        <div class="win-icon">5</div>
+                        <div class="win-content">
+                            <h4>Data Analysis</h4>
+                            <p>Extract insights from impact reports without consultants</p>
+                        </div>
+                    </div>
+                    <div class="win-item">
+                        <div class="win-icon">6</div>
+                        <div class="win-content">
+                            <h4>Document Review</h4>
+                            <p>Quickly identify key themes across multiple documents</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
