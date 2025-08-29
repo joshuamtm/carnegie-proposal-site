@@ -40,4 +40,4 @@ Josh
 Co-Founder, Meet the Moment  
 joshua@mtm.now | www.mtm.now  
 📱 [Phone]  
-🗓️ Schedule a call: [Calendar link]
+🗓️ Schedule a call: https://calendly.com/d/cr8n-vrh-4kn/mtm-discovery-meeting
